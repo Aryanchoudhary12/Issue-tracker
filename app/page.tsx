@@ -17,19 +17,19 @@ export default async function Home() {
   const open = await prisma.issue.count({
     where: {
       status: "OPEN",
-      userId: session?.user.id ,
+      userId: session?.user?.id ?? undefined,
     },
   });
   const inProgress = await prisma.issue.count({
     where: {
       status: "IN_PROGRESS",
-      userId: session?.user.id ,
+      userId: session?.user?.id ?? undefined,
     },
   });
   const closed = await prisma.issue.count({
     where: {
       status: "CLOSED",
-      userId: session?.user.id ,
+      userId: session?.user?.id ?? undefined,
     },
   });
   return (
