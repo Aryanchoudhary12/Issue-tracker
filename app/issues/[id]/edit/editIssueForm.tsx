@@ -44,6 +44,7 @@ export default function EditIssueForm({ issue }: EditIssueFormProps) {
       await axios.patch(`/api/issues/${issue.id}`, data);
       router.push("/issues");
     } catch (error) {
+      console.error("Error updating issue:", error);
       setError("Something went wrong!");
       setSubmitting(false);
     }

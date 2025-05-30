@@ -4,7 +4,6 @@ import { Button, Flex, Table } from "@radix-ui/themes";
 import Issueinterface from "./component/issueinterface";
 import Link from "next/link";
 import IssueFilter from "./component/issuefilter";
-import { Status } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import authOptions from "@/lib/authOptions";
 export default async function IssuesPage() {
@@ -23,7 +22,7 @@ export default async function IssuesPage() {
       <p className="text-base font-medium mb-3">
         Monitor and manage all your issues in one centralized location.
         <br />
-        Add new issue by clicking on "go to new issue" button.
+        Add new issue by clicking on &quot;go to new issue&quot; button.
       </p>
       <Flex gap={"3"}>
         <IssueFilter />

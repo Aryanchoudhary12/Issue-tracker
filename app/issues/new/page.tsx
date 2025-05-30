@@ -47,6 +47,7 @@ function New() {
             router.push("/issues");
             setSubmitting(true);
           } catch (error) {
+            console.error("Error creating issue:", error);
             setError("Something went wrong!");
             setSubmitting(false);
           }

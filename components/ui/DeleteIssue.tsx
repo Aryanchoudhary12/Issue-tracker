@@ -23,6 +23,8 @@ function DeleteIssue({ issue }: Props) {
       router.push("/issues");
       router.refresh();
     } catch (error) {
+      console.error("Error deleting issue:", error);
+      setSubmitting(false);
       setError("Something went wrong while deleting the issue.");
     }
   }

@@ -11,7 +11,7 @@ function Loading() {
       <Text className="text-base font-medium mb-3">
         Monitor and manage all your issues in one centralized location.
         <br />
-        Add new issue by clicking on "go to new issue" button.
+        Add new issue by clicking on &quot;go to new issue&quot; button.
       </Text>
       <Link href="/issues/new">
         <Button>Go to New Issue</Button>
