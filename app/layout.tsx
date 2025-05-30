@@ -1,7 +1,7 @@
 import "./globals.css";
 import Navbar from "./navbar";
 import "@radix-ui/themes/styles.css";
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import AuthProviders from "./providers/authProviders";
 
 export default function RootLayout({

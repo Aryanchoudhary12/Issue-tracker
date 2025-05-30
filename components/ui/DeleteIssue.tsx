@@ -17,13 +17,13 @@ function DeleteIssue({ issue }: Props) {
   async function ondeleteIssue(issueId: number) {
     try {
       setSubmitting(true);
-      const response = await fetch(`/api/issues/${issueId}`, {
+      await fetch(`/api/issues/${issueId}`, {
         method: "DELETE",
       });
       router.push("/issues");
       router.refresh();
     } catch (error) {
-        setError("Something went wrong while deleting the issue.");
+      setError("Something went wrong while deleting the issue.");
     }
   }
   return (
@@ -55,7 +55,7 @@ function DeleteIssue({ issue }: Props) {
               >
                 <DeleteIcon className="h-4 w-4 -mr-1 stroke-3" />
                 Delete
-                {submitting && <Spinner className="ml-2"/>}
+                {submitting && <Spinner className="ml-2" />}
               </Button>
             </AlertDialog.Action>
           </Flex>

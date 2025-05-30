@@ -1,5 +1,4 @@
 "use client";
-import { Card } from "@radix-ui/themes";
 import React from "react";
 import { ChartContainer,ChartConfig,ChartLegend} from "./chart";
 import { Bar, BarChart, CartesianGrid,XAxis,YAxis } from "recharts";

@@ -10,7 +10,7 @@ import axios from "axios";
 import { useState } from "react";
 import Spinner from "@/components/ui/spinner";
 import { useRouter } from "next/navigation";
-import { InfoIcon, Pencil } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 type IssueForm = z.infer<typeof createIssueSchema>;
 
 interface EditIssueFormProps {
