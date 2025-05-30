@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Issueinterface from "../component/issueinterface";
 import delay from "delay";
-import { Pen, Pencil } from "lucide-react";
+import {Pencil } from "lucide-react";
 import Link from "next/link";
 import DeleteIssue from "@/components/ui/DeleteIssue";
 import { getServerSession } from "next-auth";
