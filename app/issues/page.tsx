@@ -7,11 +7,7 @@ import IssueFilter from "./component/issuefilter";
 import { Status } from "@prisma/client";
 import { getServerSession } from "next-auth";
 import authOptions from "@/lib/authOptions";
-export default async function IssuesPage({
-  searchParams,
-}: {
-  searchParams: { status?: Status };
-}) {
+export default async function IssuesPage() {
   const session = await getServerSession(authOptions);
   console.log("session", session?.user.id);
   const issues = await prisma.issue.findMany({
