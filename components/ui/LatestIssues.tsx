@@ -11,7 +11,7 @@ const LatestIssues = async () => {
             createdAt: 'desc'
         },
         where: {
-            userId: session?.user?.id!
+            userId: session?.user?.id ?? undefined
         },
         take: 5
     });
