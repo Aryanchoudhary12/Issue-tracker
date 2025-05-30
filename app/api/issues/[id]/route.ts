@@ -43,34 +43,31 @@ export async function PATCH(
     status: 200,
   });
 }
+
 export async function DELETE(
   req: NextRequest,
-  context: {
-    params: {
-      id: string;
-    };
-  }
+  { params }: { params: { id: string } }
 ) {
-  const session = await getServerSession(authOptions);
-  if (!session)
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  const prisma = new PrismaClient();
-  const issue = await prisma.issue.findUnique({
-    where: {
-      id: parseInt(context.params.id),
-    },
-  });
-  if (!issue) {
-    return NextResponse.json("Issue not found", {
-      status: 404,
-    });
+  const session = await getServerSession(authOptions)
+
+  if (!session) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
+
+  const prisma = new PrismaClient()
+  const issueId = parseInt(params.id)
+
+  const issue = await prisma.issue.findUnique({
+    where: { id: issueId },
+  })
+
+  if (!issue) {
+    return NextResponse.json({ error: 'Issue not found' }, { status: 404 })
+  }
+
   await prisma.issue.delete({
-    where: {
-      id: issue.id,
-    },
-  });
-  return NextResponse.json("Issue deleted successfully", {
-    status: 200,
-  });
+    where: { id: issueId },
+  })
+
+  return NextResponse.json({ message: 'Issue deleted successfully' }, { status: 200 })
 }
