@@ -5,9 +5,7 @@ import { getServerSession } from "next-auth";
 
 export async function PATCH(
   req: NextRequest,
-  {
-    params,
-  }: {
+  context: {
     params: {
       id: string;
     };
@@ -24,7 +22,7 @@ export async function PATCH(
     });
   const issue = await prisma.issue.findUnique({
     where: {
-      id: parseInt(params.id),
+      id: parseInt(context.params.id),
     },
   });
   if (!issue) {
