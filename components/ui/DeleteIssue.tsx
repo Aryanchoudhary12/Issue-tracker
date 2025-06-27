@@ -14,15 +14,22 @@ function DeleteIssue({ issue }: Props) {
   const [Error, setError] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
 
-  async function ondeleteIssue(issueId: number) {
+  interface DeleteIssueError extends Error {}
+
+  interface DeleteIssueResponse {
+    ok: boolean;
+    status: number;
+  }
+
+  async function ondeleteIssue(issueId: number): Promise<void> {
     try {
       setSubmitting(true);
-      await fetch(`/api/issues/${issueId}`, {
+      const response: DeleteIssueResponse = await fetch(`/api/issues/${issueId}`, {
         method: "DELETE",
       });
       router.push("/issues");
       router.refresh();
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error deleting issue:", error);
       setSubmitting(false);
       setError("Something went wrong while deleting the issue.");
