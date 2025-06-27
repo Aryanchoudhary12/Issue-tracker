@@ -1,36 +1,40 @@
 "use client";
-import { AlertDialog, Button, Flex } from "@radix-ui/themes";
+import { AlertDialog, Button, Flex, Spinner } from "@radix-ui/themes";
 import { DeleteIcon, Trash2Icon } from "lucide-react";
 import React from "react";
-// interface Props {
-//   issue: {
-//     id: number;
-//   };
-// }
+import { useRouter } from "next/navigation";
+interface Props {
+  issue: {
+    id: number;
+  };
+}
 
-function DeleteIssue() {
+function DeleteIssue({ issue }: Props) {
+  const router = useRouter();
   const [Error, setError] = React.useState("");
+  const [submitting, setSubmitting] = React.useState(false);
 
-  // interface DeleteIssueResponse {
-  //   ok: boolean;
-  //   status: number;
-  // }
 
-  // async function ondeleteIssue(issueId: number): Promise<void> {
-  //   try {
-  //     setSubmitting(true);
-  //     const response: DeleteIssueResponse = await fetch(`/api/issues/${issueId}`, {
-  //       method: "DELETE",
-  //     });
-  //     router.push("/issues");
-  //     console.log("Issue deleted successfully:", response);
-  //     router.refresh();
-  //   } catch (error: unknown) {
-  //     console.error("Error deleting issue:", error);
-  //     setSubmitting(false);
-  //     setError("Something went wrong while deleting the issue.");
-  //   }
-  // }
+  interface DeleteIssueResponse {
+    ok: boolean;
+    status: number;
+  }
+
+  async function ondeleteIssue(issueId: number): Promise<void> {
+    try {
+      setSubmitting(true);
+      const response: DeleteIssueResponse = await fetch(`/api/issues/${issueId}`, {
+        method: "DELETE",
+      });
+      router.push("/issues");
+      console.log("Issue deleted successfully:", response);
+      router.refresh();
+    } catch (error: unknown) {
+      console.error("Error deleting issue:", error);
+      setSubmitting(false);
+      setError("Something went wrong while deleting the issue.");
+    }
+  }
   return (
     <div>
       <AlertDialog.Root>
@@ -55,10 +59,12 @@ function DeleteIssue() {
               <Button
                 variant="solid"
                 color="red"
+                onClick={() => ondeleteIssue(issue.id)}
+                disabled={submitting}
               >
                 <DeleteIcon className="h-4 w-4 -mr-1 stroke-3" />
                 Delete
-                
+                {submitting && <Spinner className="ml-2" />}
               </Button>
             </AlertDialog.Action>
           </Flex>
