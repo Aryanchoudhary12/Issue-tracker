@@ -44,9 +44,13 @@ export async function PATCH(
   });
 }
 
+
 export async function DELETE(
+  req: NextRequest,
   context: { params: { id: string } }
 ) {
+  const userAgent = req.headers.get('user-agent') || 'Unknown';
+  console.log('DELETE request made by:', userAgent);
   const session = await getServerSession(authOptions);
 
   if (!session) {
