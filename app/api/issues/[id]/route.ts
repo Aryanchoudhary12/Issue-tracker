@@ -45,29 +45,28 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions);
 
   if (!session) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const prisma = new PrismaClient()
-  const issueId = parseInt(params.id)
+  const prisma = new PrismaClient();
+  const issueId = parseInt(context.params.id);
 
   const issue = await prisma.issue.findUnique({
     where: { id: issueId },
-  })
+  });
 
   if (!issue) {
-    return NextResponse.json({ error: 'Issue not found' }, { status: 404 })
+    return NextResponse.json({ error: 'Issue not found' }, { status: 404 });
   }
 
   await prisma.issue.delete({
     where: { id: issueId },
-  })
+  });
 
-  return NextResponse.json({ message: 'Issue deleted successfully' }, { status: 200 })
+  return NextResponse.json({ message: 'Issue deleted successfully' }, { status: 200 });
 }
