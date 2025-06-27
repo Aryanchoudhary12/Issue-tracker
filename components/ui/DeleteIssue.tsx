@@ -14,7 +14,6 @@ function DeleteIssue({ issue }: Props) {
   const [Error, setError] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
 
-  interface DeleteIssueError extends Error {}
 
   interface DeleteIssueResponse {
     ok: boolean;
@@ -28,6 +27,7 @@ function DeleteIssue({ issue }: Props) {
         method: "DELETE",
       });
       router.push("/issues");
+      console.log("Issue deleted successfully:", response);
       router.refresh();
     } catch (error: unknown) {
       console.error("Error deleting issue:", error);
