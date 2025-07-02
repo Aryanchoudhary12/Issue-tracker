@@ -3,11 +3,12 @@ import { PrismaClient } from "@prisma/client";
 import authOptions from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>
 }
 export async function PATCH(req: NextRequest, context: Props) {
+  console.log(context)
   const { id } = await context.params;
   const session = await getServerSession(authOptions);
   if (!session)
