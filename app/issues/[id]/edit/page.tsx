@@ -1,9 +1,9 @@
 import { prisma } from "@/prisma/client";
 import EditIssueForm from "./editIssueForm";
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditIssuePage(context: Props) {

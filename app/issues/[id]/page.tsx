@@ -9,7 +9,7 @@ import Link from "next/link";
 import DeleteIssue from "@/components/ui/DeleteIssue";
 import { getServerSession } from "next-auth";
 import authOptions from "@/lib/authOptions";
-interface Props {
+type Props = {
   params: { id: string };
 }
 async function IssueDetailPage({ params }: Props) {
@@ -41,7 +41,7 @@ async function IssueDetailPage({ params }: Props) {
           <Link href={`/issues/${issue.id}/edit`}>
             <Button variant="outline" color="iris">
               <Pencil className="h-4 w-4 -mr-1" />
-              Edit Isssue
+              Edit Issue
             </Button>
           </Link>
           <DeleteIssue issue={{ id: issue.id }} />
