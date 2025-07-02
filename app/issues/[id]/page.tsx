@@ -4,18 +4,18 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Issueinterface from "../component/issueinterface";
 import delay from "delay";
-import {Pencil } from "lucide-react";
+import { Pencil } from "lucide-react";
 import Link from "next/link";
 import DeleteIssue from "@/components/ui/DeleteIssue";
 import { getServerSession } from "next-auth";
 import authOptions from "@/lib/authOptions";
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 async function IssueDetailPage(context: Props) {
-  const {id} = await context.params; 
+  const { id } = await context.params;
   const session = await getServerSession(authOptions);
   const issue = await prisma.issue.findUnique({
     where: {
