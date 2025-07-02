@@ -17,12 +17,12 @@ function Loading() {
       <p className="text-base font-poppins mb-3">
         Monitor and manage all your issues in one centralized location.
         <br />
-        Add new issue by clicking on &quot;go to new issue&quot; button.
+        Add new issue by clicking on &quot;Add issue&quot; button.
       </p>
       <Flex gap={"3"} align={"center"}>
         <TextField.Root size="3" placeholder="Search the docs…" />
         <Link href="/issues/new">
-          <Button>Go to New Issue</Button>
+          <Button>Add Issue</Button>
         </Link>
       </Flex>
       <Table.Root variant="surface" className="mt-3 w-full">

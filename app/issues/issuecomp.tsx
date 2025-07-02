@@ -33,7 +33,7 @@ export default function IssuesPage({ issues }: IssueDetailProps) {
       <p className="text-base font-poppins mb-3">
         Monitor and manage all your issues in one centralized location.
         <br />
-        Add new issue by clicking on &quot;go to new issue&quot; button.
+        Add new issue by clicking on &quot;Add issue&quot; button.
       </p>
       <Flex gap={"3"} align={"center"}>
         <TextField.Root
@@ -42,7 +42,7 @@ export default function IssuesPage({ issues }: IssueDetailProps) {
           onChange={(e) => setQuery((e.target as HTMLInputElement).value)}
         />
         <Link href="/issues/new">
-          <Button>Go to New Issue</Button>
+          <Button>Add Issue</Button>
         </Link>
       </Flex>
       <Table.Root variant="surface" className="mt-3 max-w-11/12">
