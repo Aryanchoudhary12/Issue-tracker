@@ -6,7 +6,7 @@ import delay from "delay";
 import IssuesPage from "./issuecomp";
 
 async function Isssues() {
-  await delay(2000);
+  await delay(1000);
   const session = await getServerSession(authOptions);
   const issues = await prisma.issue.findMany({
     where: {
