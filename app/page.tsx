@@ -8,7 +8,7 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
   if (!session) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col items-center justify-center min-h-[40rem]">
         <h1 className="text-2xl font-bold">Please sign in to view your issues</h1>
         <p className="text-lg">You need to be signed in to access this page.</p>
       </div>

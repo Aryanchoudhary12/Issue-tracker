@@ -21,7 +21,7 @@ function Navbar() {
       <div className="md:flex flex-col h-screen border-r-2 border-slate-600/40 w-40 bg-sidebar gap-10 hidden">
         <div className="flex">
           <div className="h-16 w-full flex justify-center items-center bg-secondary gap-1">
-            <Bug className="bg-[#be3838] p-2 h-10 w-10 stroke-white rounded-xl"/>
+            <Bug className="bg-[#be3838] p-2 h-10 w-10 stroke-white rounded-xl" />
             <p className="text-white text-lg font-semibold font-roboto">
               IssueTracker
             </p>
@@ -121,10 +121,7 @@ function Navbar() {
       <div className=" flex h-16 md:w-fit  justify-between max-sm:w-full sm:w-full bg-sidebar md:bg-transparent items-center ">
         <div className="md:flex border-t-64 border-secondary  border-l-4 border-r-transparent border-r-20 md:h-0 md:w-0 relative right-1 max-sm:hidden sm:hidden"></div>
         <div className="flex items-center justify-center gap-2 pl-3 md:hidden">
-          <Bug className="bg-[#be3838] p-2 h-10 w-10 stroke-white rounded-xl"/>
-          <p className="text-white text-lg font-medium font-roboto">
-            IssueTracker
-          </p>
+          <Bug className="bg-[#be3838] p-2 h-10 w-10 stroke-white rounded-xl" />
         </div>
         <ul className="flex flex-row items-center justify-end gap-x-6 w-auto rounded-xs md:hidden mr-5">
           <Link href="/issues" passHref className="w-fit">
@@ -141,19 +138,17 @@ function Navbar() {
                 currentpath === "/" ? " text-white" : " text-white/80"
               }`}
             >
-              Dashboard
+              <NotepadText/>
             </li>
           </Link>
           {status === "authenticated" && (
             <Button variant="outline" onClick={() => signOut()}>
               <LogOutIcon className="stroke-secondary h-4 w-4" />
-              <p className="font-roboto">Sign Out</p>
             </Button>
           )}
           {status === "unauthenticated" && (
             <Button variant="outline" onClick={() => signIn()}>
               <LogIn className="stroke-secondary h-4 w-4" />
-              <p className="font-roboto">Sign In</p>
             </Button>
           )}
           {status === "authenticated" && (
