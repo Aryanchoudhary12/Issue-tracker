@@ -14,11 +14,12 @@ interface Props {
     id: string;
   };
 }
-async function IssueDetailPage({ params }: Props) {
+async function IssueDetailPage(context: Props) {
+  const {id} = await context.params; 
   const session = await getServerSession(authOptions);
   const issue = await prisma.issue.findUnique({
     where: {
-      id: parseInt(params.id, 10),
+      id: parseInt(id, 10),
     },
   });
   if (!issue) {
