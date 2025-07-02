@@ -1,10 +1,10 @@
 "use client";
+export const dynamic = "force-dynamic";
 import { createIssueSchema } from "@/app/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TextField, Button, Callout } from "@radix-ui/themes";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import z from "zod";
-import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import axios from "axios";
 import { useState } from "react";
@@ -27,7 +27,6 @@ export default function EditIssueForm({ issue }: EditIssueFormProps) {
   const router = useRouter();
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors },
   } = useForm<IssueForm>({
@@ -78,17 +77,14 @@ export default function EditIssueForm({ issue }: EditIssueFormProps) {
 
         {errors.title && <p className="text-red-400">{errors.title.message}</p>}
 
-        <Controller
-          name="description"
-          control={control}
-          render={({ field }) => (
-            <SimpleMDE
-              {...field}
-              placeholder="Description"
-              className="w-full"
-            />
-          )}
-        />
+        <TextField.Root
+          placeholder="Description"
+          color="indigo"
+          {...register("description")}
+          className="w-full"
+        >
+          <TextField.Slot />
+        </TextField.Root>
         {errors.description && (
           <p className="text-red-400">{errors.description.message}</p>
         )}

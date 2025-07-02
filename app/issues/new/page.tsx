@@ -2,7 +2,6 @@
 export const dynamic = "force-dynamic";
 import React, { useState } from "react";
 import { TextField, Button, Text } from "@radix-ui/themes";
-import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
@@ -20,7 +19,6 @@ function New() {
   const router = useRouter();
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors },
   } = useForm<IssueForm>({
@@ -67,11 +65,14 @@ function New() {
             {errors.title.message}
           </Text>
         )}
-        <Controller
-          name="description"
-          control={control}
-          render={({ field }) => <SimpleMDE {...field} placeholder="Description" className="w-full"/>}
-        />
+        <TextField.Root
+          placeholder="Description"
+          color="indigo"
+          {...register("description")}
+          className="w-full"
+        >
+          <TextField.Slot />
+        </TextField.Root>
         {errors.description && (
           <Text color="red" typeof="p">
             {errors.description.message}
