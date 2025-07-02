@@ -3,7 +3,17 @@ import Navbar from "./navbar";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 import AuthProviders from "./providers/authProviders";
-
+import { Roboto_Condensed,Poppins } from "next/font/google";
+const robotoCondensed = Roboto_Condensed({
+  subsets: ["latin"],
+  weight: ["200","400","500","600","700"],
+  variable: "--roboto-condensed",
+});
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["200","400","500","600","700"],
+  variable: "--poppins",
+});
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -11,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${robotoCondensed.variable} ${poppins.variable}`}>
         <AuthProviders>
           <Theme
             accentColor="red"

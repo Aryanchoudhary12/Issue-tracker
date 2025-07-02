@@ -110,7 +110,12 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-
+.font-roboto{
+  font-family: var(--roboto-condensed),sans-serif;
+}
+.font-poppins{
+  font-family: var(--poppins),sans-serif;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -1,13 +1,13 @@
 "use client";
 export const dynamic = "force-dynamic";
 import React, { useState } from "react";
-import { TextField, Button, Text } from "@radix-ui/themes";
+import { TextField, Button, Text, TextArea } from "@radix-ui/themes";
 import "easymde/dist/easymde.min.css";
-import { useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Callout } from "@radix-ui/themes";
-import { InfoIcon } from "lucide-react";
+import { InfoIcon, Plus } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createIssueSchema } from "@/app/validationSchema";
 import z from "zod";
@@ -37,7 +37,17 @@ function New() {
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}
-
+      <div className="flex gap-2 items-center mb-2 mt-10">
+        <Plus className="stroke-white p-2 h-10 w-10 rounded-md bg-teal-200/20" />
+        <div>
+          <h1 className="font-bold text-2xl font-roboto">ADD ISSUES</h1>
+          <hr className="border-none h-1 w-32 bg-muted mb-1 rounded-2xl" />
+        </div>
+      </div>
+      <p className="text-base font-poppins mb-3">
+        Add new issue by filling the form and then clicking the Submit new issue
+        button.
+      </p>
       <form
         className="flex flex-col items-start max-sm:w-11/12 sm:w-9/12 lg:w-6/12 gap-y-3 "
         onSubmit={handleSubmit(async (data) => {
@@ -65,14 +75,12 @@ function New() {
             {errors.title.message}
           </Text>
         )}
-        <TextField.Root
+        <TextArea
           placeholder="Description"
           color="indigo"
           {...register("description")}
           className="w-full"
-        >
-          <TextField.Slot />
-        </TextField.Root>
+        ></TextArea>
         {errors.description && (
           <Text color="red" typeof="p">
             {errors.description.message}

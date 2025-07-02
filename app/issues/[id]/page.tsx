@@ -1,5 +1,5 @@
 import { prisma } from "@/prisma/client";
-import { Box, Button, Card, Flex, Heading } from "@radix-ui/themes";
+import { Box, Button, Card, Flex} from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 import React from "react";
 import Issueinterface from "../component/issueinterface";
@@ -27,20 +27,20 @@ async function IssueDetailPage(context: Props) {
   }
   await delay(300);
   return (
-    <div className="grid sm:grid-rows-2 md:grid-cols-6 p-4 gap-3">
-      <Box className="col-span-4 space-y-3 max-sm:w-10/12 sm:w-10/12 md:w-full">
-        <Heading>{issue?.title}</Heading>
-        <Flex gap="3" align="center" className="mt-3">
+    <div className="flex flex-col  p-4 gap-3 mt-4">
+      <Box className="space-y-3 w-10/12 ">
+        <h1 className="text-5xl font-semibold font-poppins">{issue?.title}</h1>
+        <Flex gap="3" align="center" justify="between" className="mt-3">
           <Issueinterface status={issue.status} />
-          <p className="text-white/50 text-sm">
+          <p className="text-white/50 text-base font-roboto">
             {issue?.createdAt.toDateString()}
           </p>
         </Flex>
-
+        <hr className="h-0 border-2 rounded-xl"/>
         <Card variant="surface">{issue?.description}</Card>
       </Box>
       {session && (
-        <div className="col-span-2 flex flex-row md:flex-col gap-3 w-fit">
+        <div className=" flex flex-row gap-3 w-fit mt-4">
           <Link href={`/issues/${issue.id}/edit`}>
             <Button variant="outline" color="iris">
               <Pencil className="h-4 w-4 -mr-1" />
