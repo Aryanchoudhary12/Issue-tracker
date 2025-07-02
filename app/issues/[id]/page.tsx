@@ -10,16 +10,13 @@ import DeleteIssue from "@/components/ui/DeleteIssue";
 import { getServerSession } from "next-auth";
 import authOptions from "@/lib/authOptions";
 interface Props {
-  params: Promise<{
-    id: string;
-  }>;
+  params: { id: string };
 }
-async function IssueDetailPage(context: Props) {
-  const { id } = await context.params;
+async function IssueDetailPage({ params }: Props) {
   const session = await getServerSession(authOptions);
   const issue = await prisma.issue.findUnique({
     where: {
-      id: parseInt(id, 10),
+      id: parseInt(params.id, 10),
     },
   });
   if (!issue) {
