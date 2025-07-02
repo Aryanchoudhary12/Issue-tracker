@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import React, { useState } from "react";
 import { TextField, Button, Text } from "@radix-ui/themes";
 import "easymde/dist/easymde.min.css";
-import { useForm, Controller } from "react-hook-form";
+import { useForm} from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Callout } from "@radix-ui/themes";
