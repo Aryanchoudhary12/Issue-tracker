@@ -1,4 +1,4 @@
-import { Button, Flex, Link, Table, Text, TextField } from "@radix-ui/themes";
+import { Button, Flex, Link, Table, TextField } from "@radix-ui/themes";
 import { TriangleAlert } from "lucide-react";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
